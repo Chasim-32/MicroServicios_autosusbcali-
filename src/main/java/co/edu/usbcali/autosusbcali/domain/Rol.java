@@ -1,0 +1,30 @@
+package co.edu.usbcali.autosusbcali.domain;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+
+@Entity
+@Table(name = "roles")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class Rol {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "nombre", length = 50, nullable = false, unique = true)
+    private String nombre;
+
+    @Column(name = "descripcion")
+    private String descripcion;
+
+    @Column(name = "activo", nullable = false)
+    private Boolean activo;
+
+}
