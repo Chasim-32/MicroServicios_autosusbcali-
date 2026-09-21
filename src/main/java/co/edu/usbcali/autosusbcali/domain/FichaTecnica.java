@@ -38,9 +38,6 @@ public class FichaTecnica {
     @Column(name = "num_puertas")
     private short numPuertas;
 
-    @Column(name = "num_puertas")
-    private Short num_puertas;
-
     @Column(name = "capacidad_pasajeros")
     private Short capacidadPasajeros;
 
