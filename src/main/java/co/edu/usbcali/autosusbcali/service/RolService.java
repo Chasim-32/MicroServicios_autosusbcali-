@@ -42,6 +42,11 @@ public class RolService implements IRolService{
 
     @Override
     public ObtenerRolResponse crearRol(CrearRolRequest crearRolRequest) throws Exception {
+        // validaciones del objeto #crearRolRequest
+
+        if(crearRolRequest == null){
+
+        }
         return null;
     }
 }
