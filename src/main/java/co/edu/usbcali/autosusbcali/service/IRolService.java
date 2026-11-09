@@ -1,6 +1,6 @@
 package co.edu.usbcali.autosusbcali.service;
 
-import co.edu.usbcali.autosusbcali.dto.request.CrearRolRequest;
+import co.edu.usbcali.autosusbcali.dto.request.ClearModificationRolRequest;
 import co.edu.usbcali.autosusbcali.dto.response.ObtenerRolResponse;
 
 import java.util.List;
@@ -17,5 +17,16 @@ public interface IRolService {
     ObtenerRolResponse obtenerRolPorId(Long id);
 
     //Metedo para crear un rol
-    ObtenerRolResponse crearRol(CrearRolRequest crearRolRequest) throws Exception;
+    ObtenerRolResponse crearRol(ClearModificationRolRequest crearRolRequest) throws Exception;
+
+    // metrdo para modificar un rol
+    ObtenerRolResponse modificarRol(Long id, ClearModificationRolRequest modificationRolRequest) throws Exception;
+
+    // Eliminación Física (Borrado real DELETE en BD)
+    void eliminarRolFisico(Long id) throws Exception;
+
+    // Eliminación Lógica (Cambio de estado activo = false)
+    void eliminarRolLogico(Long id) throws Exception;
+
+
 }

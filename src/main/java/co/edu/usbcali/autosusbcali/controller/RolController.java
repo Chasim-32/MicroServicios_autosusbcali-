@@ -1,14 +1,12 @@
 package co.edu.usbcali.autosusbcali.controller;
 
+import co.edu.usbcali.autosusbcali.dto.request.ClearModificationRolRequest;
 import co.edu.usbcali.autosusbcali.dto.response.ObtenerRolResponse;
 import co.edu.usbcali.autosusbcali.service.IRolService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -50,7 +48,32 @@ public class RolController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+    @PostMapping("/guardar")
+    public ResponseEntity<ObtenerRolResponse> crearRol(
+            @RequestBody ClearModificationRolRequest crearRolRequest) throws Exception {
+        return new ResponseEntity<>(rolService.crearRol(crearRolRequest),
+        HttpStatus.CREATED
+        );
 
+    }
 
+    @PutMapping("/modificar/{id}")
+    public ResponseEntity<ObtenerRolResponse> modificarRol(
+            @PathVariable Long id,
+            @RequestBody ClearModificationRolRequest crearModificarRolRequest) throws Exception {
+        return new ResponseEntity<>(
+                rolService.modificarRol(id, crearModificarRolRequest),
+                HttpStatus.OK
+        );
+    }
 
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<Void> eliminarRol(@PathVariable Long id) throws Exception {
+        rolService.eliminarRolFisico(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
+
+
+
+
